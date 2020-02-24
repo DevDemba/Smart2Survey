@@ -23,11 +23,10 @@ connection.connect((err) => {
   console.log('Connected!');
 }); */
 
-// const publicRoot = 'versLeCheminFrontAngular/dist';
-// app.use(express.static(publicRoot));
+const publicRoot = '../front/survey/dist/survey';
+app.use(express.static(publicRoot));
  
 app.use(cors(corsOptions));
-// app.use(express.static(publicRoot));
 // app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
