@@ -9,6 +9,7 @@ import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { ConnectionComponent } from './pages/connection/connection.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SurveyComponent } from './pages/survey/survey.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SurveyComponent } from './pages/survey/survey.component';
     SubscribeComponent,
     ConnectionComponent,
     ProfileComponent,
-    SurveyComponent
+    SurveyComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,8 @@ import { SurveyComponent } from './pages/survey/survey.component';
       { path: 'subscribe', component: SubscribeComponent },
       { path: 'connection', component: ConnectionComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'survey', component: SurveyComponent },
+      { path: 'history', component: HistoryComponent }
 
     ])
   ],

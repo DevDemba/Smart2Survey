@@ -23,8 +23,8 @@ connection.connect((err) => {
   console.log('Connected!');
 }); */
 
-const publicRoot = '../front/survey/dist/survey';
-app.use(express.static(publicRoot));
+//const publicRoot = '../front/survey/dist/survey';
+//app.use(express.static(publicRoot));
  
 app.use(cors(corsOptions));
 // app.use('/uploads', express.static('uploads'));

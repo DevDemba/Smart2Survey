@@ -3,11 +3,4 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
-}
-
-.right_side{
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50px;
 }
