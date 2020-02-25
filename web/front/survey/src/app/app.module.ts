@@ -8,6 +8,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { ConnectionComponent } from './pages/connection/connection.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SurveyComponent } from './pages/survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HomepageComponent,
     SubscribeComponent,
     ConnectionComponent,
-    ProfileComponent
+    ProfileComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,

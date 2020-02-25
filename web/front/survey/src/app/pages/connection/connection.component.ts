@@ -11,5 +11,9 @@ export class ConnectionComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  login() {
+
+  }
 
 }

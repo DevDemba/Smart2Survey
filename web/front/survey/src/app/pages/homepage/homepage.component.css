@@ -1,5 +1,7 @@
 .mytitle {
     font-size: xx-large;
+    margin-top: 2px;
+    margin-bottom: 8px;
 }
 
 .main_section {
@@ -12,11 +14,12 @@
 .sub_main_section {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 
 }
 
 .sub_main_section .card {
-    width: 49.5%;
+    width: 49%;
 }
 .sub_main_section .card img {
     width: 100%;
@@ -24,7 +27,7 @@
 }
 
 .card-image {
-    height: 450px;
+    height: 320px;
 }
 
 .threeblocs{
@@ -32,8 +35,9 @@
     justify-content: space-between;
 }
 
+
 body, footer {
-    padding: 20px;
+    padding: 30px;
     color: white;
     /* background-color: #e57367 ; */
     background-color: rgba(229, 115, 112, 0.4);
