@@ -19,9 +19,8 @@
 
 <div class="container">
   <h3>My profile</h3>
-  <p>
-    My information and my stats
-  </p><br>
+  <p>{{ details?.firstName }} - {{ details?.email }}</p>
+  <p>My information and my stats</p><br>
   <div>
     <b>View all survey : </b><a [routerLink]="['/survey']">here</a>
   </div>

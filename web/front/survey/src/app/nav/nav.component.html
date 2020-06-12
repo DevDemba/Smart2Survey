@@ -3,9 +3,10 @@
       <a href="/" class="brand-logo left"><i class="material-icons">trending_up</i>Smart2survey</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a [routerLink]="['/']">Home</a></li>
-        <li><a [routerLink]="['/profile']">Profile</a></li>
-        <li><a [routerLink]="['/connection']">Join</a></li>
-        <li><a [routerLink]="['/subscribe']">Subscribe</a></li>
+        <li *ngIf="auth.isLoggedIn()"><a [routerLink]="['/profile']">{{ auth.getUserDetails()?.name }}</a></li>
+        <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
+        <li *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/connection']">Join</a></li>
+        <li *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/subscribe']">Subscribe</a></li>
       </ul>
     </div>
   </nav >
