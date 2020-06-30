@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs/operators';
-import { TokenPayload, AuthService } from 'src/app/services/auth.service';
+import { TokenPayload, AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-subscribe',
@@ -16,12 +16,12 @@ export class SubscribeComponent implements OnInit {
 
   credentials: TokenPayload = {
     email: '',
-    name: '',
+    firstName: '',
     password: ''
   };
   
 
-  constructor(private router: Router, private UserService: UserService , private _auth: AuthService, private fb: FormBuilder) { }
+  constructor(private router: Router, private _auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -33,17 +33,8 @@ export class SubscribeComponent implements OnInit {
     })
   }
 
-  /* register() {
-    this.UserService.register(this.myForm.value).subscribe(
-      
-      res => console.log(res),
-      err => console.log(err));
-
-    this.router.navigate(['/connection']);  
-  } */
-
   register() {
-    this._auth.register(this.credentials).subscribe(() => {
+    this._auth.register(this.myForm.value).subscribe(() => {
       this.router.navigateByUrl('/profile');
     }, (err) => {
       console.error(err);
@@ -51,11 +42,11 @@ export class SubscribeComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
+  /*   console.log('Valid?', form.valid); // true or false
     console.log('firstName', form.value.firstName);
     console.log('lastName', form.value.lastName);
     console.log('Email', form.value.email);    
-    console.log('Password', form.value.password);
+    console.log('Password', form.value.password); */
   }
 
 

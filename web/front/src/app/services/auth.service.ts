@@ -9,7 +9,7 @@ var apiUrl = 'http://localhost:3000';
 export interface UserDetails {
     _id: string;
     email: string;
-    name: string;
+    firstName: string;
     exp: number;
     iat: number;
   }
@@ -21,7 +21,7 @@ export interface UserDetails {
   export interface TokenPayload {
     email: string;
     password: string;
-    name?: string;
+    firstName?: string;
   }
 
 @Injectable({
@@ -55,9 +55,7 @@ export class AuthService {
   public getUserDetails(): UserDetails {
     const token = this.getToken();
     let payload;
-    console.log(payload)
-    console.log(token)
-    
+
     if (token) {
       payload = token.split('.')[1];
       payload = window.atob(payload);

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService, TokenPayload } from 'src/app/services/auth.service';
 import { first } from 'rxjs/operators';
+import {TokenPayload, AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -20,15 +20,7 @@ export class ConnectionComponent implements OnInit {
   };
 
 
-  constructor(private _auth: AuthService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { 
-  /*   // redirect to home if already logged in
-    if (this._auth.currentUserValue) { 
-      this.router.navigate(['/']);
-    }
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'; */
-
-  }
+  constructor(private _auth: AuthService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -40,22 +32,9 @@ export class ConnectionComponent implements OnInit {
    // convenience getter for easy access to form fields
    //get f() { return this.myForm.controls; }
   
-  login1() {
-/*     this._auth.login(this.myForm.value).subscribe(
-      
-      res => console.log(res),
-      err => console.log(err)); */
-
-    this._auth.login(this.myForm.value)
-        .subscribe(
-            res => console.log(res),
-            err => console.log(err));
-       
-  }
 
   login() {
-
-    this._auth.login(this.credentials).subscribe(() => {
+    this._auth.login(this.myForm.value).subscribe(() => {
       this.router.navigateByUrl('/profile');
     }, (err) => {
       console.error(err);
@@ -63,9 +42,9 @@ export class ConnectionComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
+  /*   console.log('Valid?', form.valid); // true or false
     console.log('Email', form.value.email);    
-    console.log('Password', form.value.password);
+    console.log('Password', form.value.password); */
   }
 
 }
