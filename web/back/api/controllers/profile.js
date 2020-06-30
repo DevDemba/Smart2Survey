@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-//const User = mongoose.model('User');
 const User = require('./../models/user');
   
 module.exports.profileRead = function(req, res) {
@@ -10,9 +9,7 @@ module.exports.profileRead = function(req, res) {
       "message" : "UnauthorizedError: private profile"
     });
   } else {
-    // Otherwise continue
-    User
-      .findById(req.payload._id)
+    User.findById(req.payload._id)
       .exec(function(err, user) {
         res.status(200).json(user);
       });
