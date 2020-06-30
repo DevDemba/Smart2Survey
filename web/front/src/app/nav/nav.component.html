@@ -3,7 +3,7 @@
       <a href="/" class="brand-logo left"><i class="material-icons">trending_up</i>Smart2survey</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a [routerLink]="['/']">Home</a></li>
-        <li *ngIf="auth.isLoggedIn()"><a [routerLink]="['/profile']">{{ auth.getUserDetails()?.name }}</a></li>
+        <li *ngIf="auth.isLoggedIn()"><a [routerLink]="['/profile']">{{ auth.getUserDetails()?.fisrtName }}</a></li>
         <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
         <li *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/connection']">Join</a></li>
         <li *ngIf="!auth.isLoggedIn()"><a [routerLink]="['/subscribe']">Subscribe</a></li>
