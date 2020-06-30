@@ -1,8 +1,9 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
-const secret = require('./../config/secret').secret;
+const CODE = process.env.CODE;
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -21,15 +22,33 @@ const userSchema = new mongoose.Schema({
       match: [/\S+@\S+\.\S+/, 'is invalid'], 
       index: true
     },
-    password: {
-      type: String,
-      required: true
+/*     enabled: { 
+      type: Boolean, 
+      default: true 
     },
+    accountNonLocked: { 
+      type: Boolean, 
+      default: true 
+    },
+    accountNonExpired: { 
+      type: Boolean, 
+      default: true 
+    },
+    credentialsNonExpired: { 
+      type: Boolean, 
+      default: true 
+    }, */
     hash: String,
-    salt: String 
+    salt: String,
+    created_at: { 
+      type: Date, 
+      default: Date.now 
+    },
+    updated_at: { 
+      type: Date, 
+      default: Date.now 
+    }
   });
-
-  // {timestamps: true}
 
 
   userSchema.plugin(uniqueValidator, {message: 'is already taken.'});
@@ -51,9 +70,9 @@ const userSchema = new mongoose.Schema({
     return jwt.sign({
       _id: this._id,
       email: this.email,
-      name: this.name,
+      fisrtName: this.firstName,
       exp: parseInt(expiry.getTime() / 1000),
-    }, secret); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    }, CODE);
   };
 
 const User = mongoose.model('Users', userSchema);
