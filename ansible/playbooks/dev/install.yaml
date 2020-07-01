@@ -1,0 +1,28 @@
+---
+- hosts: vms
+  become: "yes"
+  become_user: root
+  vars:
+    more_tools: []
+  tasks:
+
+    - block:
+      - name: Include task install
+        import_tasks: './../../tasks/install.yaml'
+
+    - block:
+      - name: "APT: add VirtualBox repository key"
+        apt_key:
+          url: https://db.debian.org/fetchkey.cgi?fingerprint=FEDEC1CB337BCF509F43C2243914B532F4DFBE99 
+          state: present
+      - name: "APT: add virtalbox repository"
+        apt_repository:
+          repo: deb https://people.debian.org/~lucas/virtualbox-buster/ ./
+          state: present
+          update_cache: yes
+      - name: "Install VirtualBox tools"
+        apt:
+          state: present
+          name: virtualbox-guest-utils
+        #when: is_virtual_box is defined and is_virtual_box
+        #become: yes

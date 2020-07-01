@@ -3,6 +3,7 @@
 This is an application that will generate surveys and display the results graphically in a dashboard.
 
 ### Install
+If you work with virtual machine, please see ansible dir.  
 Before install, make sure you have installed NodeJS, npm and Angular.
 * Clone the repository or fork it
 

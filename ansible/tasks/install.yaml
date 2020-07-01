@@ -1,0 +1,88 @@
+- block: #system
+    - name: Update system
+      apt:
+        #autoremove: "yes"
+        #autoclean: "yes"
+        update_cache: "yes"
+        upgrade: "yes"
+    - name: "Add some tools"
+      apt:
+        pkg: [
+          wget,
+          apt-transport-https,
+          curl,
+          build-essential,
+          gnupg2,
+          ca-certificates,
+          lsb-release,
+          apache2-utils,
+          '{{ item }}'
+        ]
+        state: present
+      with_items: '{{ more_tools }}'
+
+- block: #nginx
+    - name: Add NGINX apt repository and add file sources.list.d/nginx.list
+      apt_repository:
+        repo: deb https://nginx.org/packages/debian/ buster nginx
+        state: present
+        update_cache: no
+      #shell: echo "deb https://nginx.org/packages/debian `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+    - name: Import NGINX signin key and check it
+      apt_key:
+        url: https://nginx.org/keys/nginx_signing.key
+    - name: Install NGINX
+      apt: update_cache="yes" name=nginx-light state=present
+    - name: Create if not exists sites-available and sites-enabled
+      file:
+        path: '/etc/nginx/{{ item }}'
+        state: directory
+      with_items: ['sites-available','sites-enabled']
+    - name: Remove default conf if present
+      file:
+        path: ['/etc/nginx/sites-available/default','/etc/nginx/conf/default']
+        state: absent
+    - name: Ensure NGINX started
+      service:
+        name: nginx
+        state: started
+
+- block: #NodeJS
+    - name: Add NodeJS setup from deb.nodesource.com version 12
+      #shell: curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      get_url:
+        url: https://deb.nodesource.com/setup_12.x
+        dest: /tmp/nodejs_setup12.x
+        mode: 0700
+    - name: Remove NodeJS setup
+      file: path=/tmp/nodejs_setup12.x state=absent
+    - name: Install NodeJS
+      apt: update_cache="yes" name=nodejs state=present
+
+- block: #MongoDB
+    #shell: echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+    - name: Add MongoDB public GPG key
+      apt_key:
+        url: https://www.mongodb.org/static/pgp/server-4.2.asc
+        state: present
+    - name: Add  MongoDB repository (debian 10 buster)
+      apt_repository:
+        repo: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main
+        state: present
+        filename: mongodb-org-4.2
+      #blockinfile:
+      # path: /etc/apt/sources.list.d/mongodb-org-4.2.list
+      # block: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main
+      #  create: yes
+    - name: Install MongoDB
+      apt: update_cache="yes" name=mongodb-org state=present
+    - name: Reload config
+      shell: systemctl daemon-reload
+    - name: Ensure MongoDB enabled and started
+      service:
+        name: mongod
+        enabled: yes
+        state: started
+- block: #git
+    - name: Install git
+      apt: update_cache="yes" name=git-all state=present
