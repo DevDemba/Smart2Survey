@@ -1,6 +1,6 @@
 ## Automate your scripts with Ansible
 #### Resources:  
-https://www.ansible.com/
+https://www.ansible.com/  
 https://docs.ansible.com/ansible/latest/index.html
 
 #### Author: DylanFJ
@@ -96,6 +96,7 @@ iface enp0s8 inet dhcp
 echo "192.168.56.60   debian10" | sudo tee -a /etc/hosts
 echo -e "Host debian10\n  User ansible" >> ~/.ssh/config
 ```
+For Windows users, edit as admin: ```C:\Windows\System32\drivers\etc\hosts```
 * Allow symbolic links in VirtualBox shared folders:
 
 ```
@@ -148,10 +149,9 @@ ssh ansible@debian10 'sudo reboot'
 If you have this error when running dev-1-install.sh "System has not been booted with systemd as init system (PID 1)", do this:
 ```
 ssh root@debian10
-ls -l /sbin/ | grep init
 ls -l /usr/sbin/ | grep init
 ```
-For both, you should have "init -> /lib/systemd/systemd".
+You should have ```init -> /lib/systemd/systemd```.
 If not,
 ```
 rm /usr/sbin/init
