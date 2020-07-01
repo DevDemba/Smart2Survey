@@ -2,54 +2,41 @@
 
 This is an application that will generate surveys and display the results graphically in a dashboard.
 
-This application is accesible on: https://www.smart2survey.fr/
-
-## Install
-
-* Clone the repository
+### Install
+Before install, make sure you have installed NodeJS, npm and Angular.
+* Clone the repository or fork it
 
 ``` 
-https://github.com/DevDemba/Smart2Survey.git 
+git clone https://github.com/DevDemba/Smart2Survey.git 
 ```
 
-* install dependencies (front and back folders)
+* Install dependencies in front and back folders
 
 ```
 npm install
 ```
 
-* Run the back 
+* Go inside back dir and run
 
 ``` 
 npm start
 ```
 
-* Run the front 
+* Go inside front dir and run 
 
 ```
 ng serve
 ```
 
-* Create a env file inside the back folder with this information:
+* Create a .env file inside the back folder with informations of .env.dist and put corresponding values.
+
+* For access to the front part: (4200 is the default port)
 
 ```
+http://localhost:4200
 ```
 
-* For access to the front part:
-
+* For access to the back part: (3000 is the default port)
 ```
-localhost:4200
-```
-
-* For access to the kact part:
-```
-localhost:3000
+http://localhost:3000
 ````
-
-
-
-## How it works ! 
-
-### User 
-### Admin
-### Dashboard
