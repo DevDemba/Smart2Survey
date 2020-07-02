@@ -1,4 +1,4 @@
-- block: #system
+- block: #System
     - name: Update system
       apt:
         #autoremove: "yes"
@@ -21,7 +21,7 @@
         state: present
       with_items: '{{ more_tools }}'
 
-- block: #nginx
+- block: #NGINX
     - name: Add NGINX apt repository and add file sources.list.d/nginx.list
       apt_repository:
         repo: deb https://nginx.org/packages/debian/ buster nginx
@@ -48,12 +48,14 @@
         state: started
 
 - block: #NodeJS
-    - name: Add NodeJS setup from deb.nodesource.com version 12
+    - name: Download NodeJS setup from deb.nodesource.com version 12
       #shell: curl -sL https://deb.nodesource.com/setup_12.x | bash -
       get_url:
         url: https://deb.nodesource.com/setup_12.x
         dest: /tmp/nodejs_setup12.x
         mode: 0700
+    - name: Execute NodeJS setup file
+      command: /tmp/nodejs_setup12.x
     - name: Remove NodeJS setup
       file: path=/tmp/nodejs_setup12.x state=absent
     - name: Install NodeJS
@@ -70,10 +72,6 @@
         repo: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main
         state: present
         filename: mongodb-org-4.2
-      #blockinfile:
-      # path: /etc/apt/sources.list.d/mongodb-org-4.2.list
-      # block: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main
-      #  create: yes
     - name: Install MongoDB
       apt: update_cache="yes" name=mongodb-org state=present
     - name: Reload config
