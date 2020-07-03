@@ -1,0 +1,20 @@
+<div class="row">
+    <h3>Survey's List</h3>
+    <table  class="responsive-table striped" >
+        <thead>
+          <tr>
+              <th>Number</th>
+              <th>Survey's name</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of surveyList, index as i">
+            <td>{{ i + 1}}</td>
+            <td>{{d.name}}</td>
+            <td><button class="waves-effect waves-light btn" [routerLink]="['/survey_list', d._id]">Answer</button></td>
+            <td><button class="waves-effect waves-light btn" [routerLink]="['/survey_response', d._id]">Results</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

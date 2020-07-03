@@ -1,4 +1,4 @@
-<nav> <!-- navbar content here  --> </nav>
+<nav></nav>
 
 <ul id="slide-out" class="sidenav">
   <li><div class="user-view">
@@ -6,28 +6,41 @@
       <img src="../../../assets/image/chart1.jpg">
     </div>
     <a href="#user"><img class="circle" src="../../../assets/image/chart1.jpg"></a>
-    <a href="#name"><span class="white-text name">Demba DIA</span></a>
-    <a href="#email"><span class="white-text email">demba.dia@gmail.com</span></a>
+    <a href="#name"><span class="white-text name">{{ details?.firstName }}</span></a>
+    <a href="#email"><span class="white-text email">{{ details?.email }}</span></a>
   </div></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>History</a></li>
+  <li><a href="#!">Tools</a></li>
   <li><div class="divider"></div></li>
   <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  <li><a class="waves-effect" href="#!">Events</a></li>
 </ul>
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 <div class="container">
   <h3>My profile</h3>
-  <p>{{ details?.firstName }}</p>
-  <p>{{ details?.email }}</p>
-  <p>My information and my stats</p><br>
-  <div>
-    <b>View all survey : </b><a [routerLink]="['/survey']">here</a>
-  </div>
+  <h4>This is my information</h4>
+  <ul>
+    <li><b>{{ details?.lastName }}</b></li>
+    <li><b>{{ details?.firstName }}</b></li>
+    <li><b>{{ details?.email }}</b></li>
+  </ul>
+  <!-- <a class='dropdown-trigger btn' data-target='dropdown1'>Drop Me!</a> -->
+  <br>
+  <button class="waves-effect waves-light btn"  [routerLink]="['/survey']" type="button">
+    Explain Project
+  </button>
+  <br>
+   <button  class="waves-effect waves-light btn" [routerLink]="['/history']" type="button">
+    View feedback 
+  </button>
+  <br>
+  <button  class="waves-effect waves-light btn" [routerLink]="['/survey_list']" type="button">
+    View all survey 
+  </button>
 </div>
- <div class="right_side">
+<!--  <div class="right_side">
     <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
-</div>
+</div> -->
 
 

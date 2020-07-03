@@ -1,0 +1,46 @@
+<div class="row">
+  <form class="col s12" [formGroup]="answerSurvey" (ngSubmit)="onSubmit()">
+    <table  class="responsive-table" >
+        <thead>
+          <tr>
+              <th>Name survey</th>
+              <th>Question</th>
+              <th>Answer 1</th>
+              <th>Answer 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="surveyDetail">
+            <td>{{ surveyDetail.name }}</td>
+            <td>{{ surveyDetail.questionnaires[0].question }}</td>
+            <td>
+                <p>
+                  <label>
+                    <input type="checkbox" formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[0].text }}'/>
+                    <span>{{ surveyDetail.questionnaires[0].choices[0].text }}</span>
+                  </label>
+                </p>
+              </td> 
+              <td>
+                <p>
+                  <label>
+                    <input type="checkbox"  formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[1].text1 }}'/>
+                    <span>{{ surveyDetail.questionnaires[0].choices[1].text1 }}</span>
+                  </label>
+                </p>
+              </td>   
+          </tr>
+        </tbody>
+      </table>
+      <div class="answer">
+        <button class="btn waves-effect waves-light" type="button" name="action" (click)="answer()">Answer
+            <i class="material-icons right">add</i>
+        </button>
+    </div>
+    </form>
+</div>
+<br>
+<br>
+<div>
+  <button class="waves-effect waves-light btn" [routerLink]="['/survey_list']">Back List</button>
+</div>   

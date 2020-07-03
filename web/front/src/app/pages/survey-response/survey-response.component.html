@@ -1,0 +1,21 @@
+<div class="row">
+    <h4>Survey's result</h4>
+    
+    <table  class="responsive-table" >
+        <thead>
+          <tr>
+              <th>Name survey</th>
+              <th>Question</th>
+              <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let d of resultServey">
+              <td>{{ d.survey }}</td>
+              <td>{{ d.question }}</td>
+              <td>{{ d.choices}}</td>
+            </tr>
+        </tbody>
+      </table>
+
+</div>
