@@ -6,3 +6,9 @@ li {
     text-transform: uppercase;
     font-size: large;
 }
+
+#admin {
+    border-left: 2px solid #fff;
+    display: inline-block;
+    height: 100%;
+}
