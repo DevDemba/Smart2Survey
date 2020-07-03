@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="col s12" [formGroup]="answerSurvey" (ngSubmit)="onSubmit()">
+  <form class="col s12" [formGroup]="surveyAnswer" (ngSubmit)="onSubmit()">
     <table  class="responsive-table" >
         <thead>
           <tr>
@@ -11,12 +11,19 @@
         </thead>
         <tbody>
           <tr *ngIf="surveyDetail">
-            <td>{{ surveyDetail.name }}</td>
+            <td>
+              <p>
+                <label for="name">
+                  <input type="text"  formControlName="name" value="{{ surveyDetail.name }}"/>
+                 <!--  <span>{{ surveyDetail.name }}</span> -->
+                </label>
+              </p>
+            </td>
               <td>{{ surveyDetail.questionnaires[0].question }}</td>
             <td>
                 <p>
                   <label>
-                    <input type="checkbox" formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[0].text }}'/>
+                    <input type="checkbox" formControlArray="choices" />
                     <span>{{ surveyDetail.questionnaires[0].choices[0].text }}</span>
                   </label>
                 </p>
@@ -24,7 +31,7 @@
               <td>
                 <p>
                   <label>
-                    <input type="checkbox"  formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[0].text1 }}'/>
+                    <input type="checkbox"  formControlArray="choices" />
                     <span>{{ surveyDetail.questionnaires[0].choices[0].text1 }}</span>
                   </label>
                 </p>

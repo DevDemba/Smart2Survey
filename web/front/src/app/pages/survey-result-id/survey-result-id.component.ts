@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -30,8 +30,21 @@ export class SurveyResultIdComponent implements OnInit {
     this.surveyAnswer = this.fb.group({
       survey: ['name survey',Validators.required],
       question: ['question survey',Validators.required],
-      choices: ['choix1',Validators.required],
+      choices:this.fb.array([new FormGroup({
+        text: new FormControl('Yes')
+      })]),
     })
+
+    
+  }
+
+  ngOnChanges(){
+    
+    this.surveyAnswer.controls['choices'].valueChanges.subscribe(value => {
+      console.log(value);
+    });
+
+    this.surveyAnswer.value;
   }
 
   getSurveyDetail() {
@@ -49,8 +62,9 @@ export class SurveyResultIdComponent implements OnInit {
   }
   
   answer() {
-
-    console.log('surveyAnswer', this.surveyAnswer)
+    this.surveyAnswer.get('name').value;
+    
+    console.log('surveyAnswer',  this.surveyAnswer.get('name').value)
 
     const apiUrl = 'http://localhost:3000/api'
 
