@@ -1,5 +1,6 @@
 ansible_dir: '{{ inventory_dir }}/../'
 files_dir: '{{ ansible_dir }}files'
 vars_dir: '{{ ansible_dir }}vars'
-env:
-data_user: www-data
+env: dev
+web_user: www-data
+default_www_dir: /var/www

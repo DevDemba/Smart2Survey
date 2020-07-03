@@ -1,2 +1,4 @@
 ---
-site_dir: /var/www/web
+# The name of shared directory you added in VirtualBox
+shared_dir_name: web
+site_dir: '{{ default_www_dir }}/{{ shared_dir_name }}'

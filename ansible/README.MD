@@ -89,9 +89,10 @@ iface enp0s8 inet dhcp
 # exit
 ```
 
-* Add VM in /etc/hosts:
+* Add VM in your hosts file /etc/hosts:
 ```
 echo "192.168.56.60   debian10" | sudo tee -a /etc/hosts
+echo "192.168.56.60 smart2survey.local www.smart2survey.local back.smart2survey.local" | sudo tee -a /etc/hosts
 echo -e "Host debian10\n  User ansible" >> ~/.ssh/config
 ```
 For Windows users, edit as admin: ```C:\Windows\System32\drivers\etc\hosts```

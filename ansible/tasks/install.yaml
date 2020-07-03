@@ -60,6 +60,8 @@
       file: path=/tmp/nodejs_setup12.x state=absent
     - name: Install NodeJS
       apt: update_cache="yes" name=nodejs state=present
+    - name: Install Angular
+      command: npm install -g @angular/cli
 
 - block: #MongoDB
     #shell: echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
