@@ -18,7 +18,7 @@
               <div class="input-field col s12" formArrayName="questionnaires">
                   <div *ngFor="let q of survey.controls.questionnaires.controls; index as i" [formGroupName]="i">
                     <div>
-                        <label for="answer">Question {{(i+1)}}</label>
+                        <label for="question">Question {{(i+1)}}</label>
                         <div>
                             <input type="text" formControlName="question" >
                             <span class="input-group-addon">
@@ -28,22 +28,21 @@
                     </div>
                     <div class="request" formArrayName="choices">
                         <div class="form-group" *ngFor="let c of $any(q).get('choices').controls; index as x" [formGroupName]="x" >
-                            <label for="answer">Choice {{(x+1)}}</label>
+                            <label for="text">Choice {{(x+1)}}</label>
                             <input *ngIf="x<2" type="text" formControlName="text" placeholder="Choice {{(x+1)}}">
                             <div else class="input-group">
                                 <input type="text"  formControlName="text1" placeholder="Choice {{(x+1)}}" >
-                                <span class="input-group-btn">
-                                    <button type="button" (click)="removechoice(i,x)" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
                 <div>
                     <button class="btn waves-effect waves-light" type="button" name="action" (click)="addquestion()">Add question
                         <i class="material-icons right">add</i>
                     </button>
                 </div>
+                <br>
                 <div>
                     <button class="btn waves-effect waves-light" type="button" name="action"  (click)="removechoice(i,x)">Remove 
                         <i class="material-icons right">delete</i>

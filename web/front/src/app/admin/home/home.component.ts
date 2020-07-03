@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit, OnChanges {
 
     this.questionnaires = this.survey.get('questionnaires') as FormArray;
 
-    console.log(this.survey, 'hello')
   }
 
   ngOnChanges(){
@@ -70,7 +69,7 @@ export class HomeComponent implements OnInit, OnChanges {
         url: `${apiUrl}/survey/create`,
         data: this.survey.value 
     }).then((response)=> {
-        if(response.status==201){
+        if(response.status==200){
           this.results.success="Survey created successfully";
           //console.log('success create survey');
         }   
@@ -89,7 +88,7 @@ export class HomeComponent implements OnInit, OnChanges {
         }
     });
   }
-  
+
   addchoice(i) { console.log(i, 'id added')
 
     this.survey[i].choices.push({text:"New Choice"})
