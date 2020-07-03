@@ -1,0 +1,63 @@
+<h2>Admin page</h2>
+
+  <div class="row">
+    <h4>Create Survey</h4>
+    <div class="alert alert-success" *ngIf="results.success.length>0"> 
+        <strong> Yes!</strong> {{results.success}} 
+    </div> 
+    <div class="alert alert-danger" *ngIf="results.error.length>0"> 
+        <strong>Whoops!</strong> {{results.error}} 
+    </div>
+    <form class="col s12" [formGroup]="survey" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12">
+            <input id="name" type="text" formControlName="name" class="validate">
+            <label for="name">Name</label>
+        </div>
+        <div class="input-field col s12" >
+              <div class="input-field col s12" formArrayName="questionnaires">
+                  <div *ngFor="let q of survey.controls.questionnaires.controls; index as i" [formGroupName]="i">
+                    <div>
+                        <label for="answer">Question {{(i+1)}}</label>
+                        <div>
+                            <input type="text" formControlName="question" >
+                            <span class="input-group-addon">
+                              <!--  <input type="checkbox" formControlName="multi">  {{ survey.questionnaires[i].multi?'Multiple':'Single'  }} Choice --> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="request" formArrayName="choices">
+                        <div class="form-group" *ngFor="let c of survey.controls.questionnaires.controls.choices.controls[i].controls[i].controls; index as i" [formGroupName]="i" >
+                            <label for="answer">Choice {{(index+1)}}</label>
+                            <input *ngIf="index > 2" type="text" formControlName="text">
+                            <div else class="input-group">
+                                <input type="text"  formArrayName="c[i].controls.text1" >
+                                <span class="input-group-btn">
+                                    <button type="button" (click)="removechoice(i,index)" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn waves-effect waves-light" type="button" name="action" (click)="addquestion()">Add question
+                        <i class="material-icons right">add</i>
+                    </button>
+                </div>
+                <div>
+                    <button class="btn waves-effect waves-light" type="button" name="action"  (click)="removechoice(i,index)">Remove 
+                        <i class="material-icons right">delete</i>
+                    </button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div>
+            <button class="btn waves-effect waves-light" type="button" name="action" (click)="create(i,index)">Create
+                <i class="material-icons right">send</i>
+            </button>
+      </div>
+    </form>
+  </div>
+
+

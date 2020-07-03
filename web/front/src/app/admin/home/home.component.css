@@ -1,0 +1,13 @@
+h2, h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    padding-block-start: 3%;
+}
