@@ -21,18 +21,18 @@
   <h3>My profile</h3>
   <h4>This is my information</h4>
   <ul>
-    <li><b>{{ details?.lastName }}</b></li>
-    <li><b>{{ details?.firstName }}</b></li>
-    <li><b>{{ details?.email }}</b></li>
+    <li><b>Lastname: {{ details?.lastName }}</b></li>
+    <li><b>FistName: {{ details?.firstName }}</b></li>
+    <li><b>Email: {{ details?.email }}</b></li>
   </ul>
   <!-- <a class='dropdown-trigger btn' data-target='dropdown1'>Drop Me!</a> -->
   <br>
   <button class="waves-effect waves-light btn"  [routerLink]="['/survey']" type="button">
-    Explain Project
+    View golbal results
   </button>
   <br>
    <button  class="waves-effect waves-light btn" [routerLink]="['/history']" type="button">
-    View feedback 
+    View the explanation 
   </button>
   <br>
   <button  class="waves-effect waves-light btn" [routerLink]="['/survey_list']" type="button">
