@@ -1,17 +1,15 @@
 ## Automate your scripts with Ansible
-#### Resources:  
+### Resources:  
 https://www.ansible.com/  
 https://docs.ansible.com/ansible/latest/index.html
 
-#### Author: DylanFJ
-
+##### Author: DylanFJ
 
 ### Install a local development VirtualBox VM
 * Before we begin
     - Operating System (OS): Debian 10 amd64bits.
-    - Title of project: mysurvey
-    - Local domain name: mysurvey.com
-* After you clone the repository, rename  the repo to "mysurvey"
+    - Title of project: Smart2Survey
+    - Local domain name: smart2survey.local
 * Download and install VirtualBox and his extension pack.
   - macOS & Windows: https://www.virtualbox.org/wiki/Downloads
   - ubuntu: sudo apt install virtualbox
@@ -39,7 +37,7 @@ https://docs.ansible.com/ansible/latest/index.html
         * Settings/Network
             * Adapter 1: Host-only Adapter, vboxnet0
             * Adapter 2: NAT
-        * Add Settings/Shared Folders/ for your project folder (mysurvey)
+        * Add Settings/Shared Folders/ for your project folder (Smart2Survey)
             * Folder Path: /path-to-your-project-folder-git-checkout/web
             * Folder Name: web
             * Auto-mount
@@ -113,6 +111,14 @@ scp ~/files/sources.list ansible@debian10:/tmp/
 ssh root@debian10
 mv /tmp/sources.list /etc/apt/
 ```
+* Check nginx user
+```
+ssh root@debian10
+cat /etc/nginx/nginx.conf
+```
+Remenber that user, you must put this user name in your ansible_directory/vars/common.yaml for key 'web_user'.  
+Nginx start with this user and your application also.
+
 * Configure ansible account:
 ```
 scp ~/.ssh/id_rsa.pub ansible@debian10:/tmp/
