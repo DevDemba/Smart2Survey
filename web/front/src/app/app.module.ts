@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,12 @@ import { SurveyComponent } from './pages/survey/survey.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginComponent } from './admin/login/login.component';
+import { HomeComponent } from './admin/home/home.component';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { SurveyResponseComponent } from './pages/survey-response/survey-response.component';
+import { SurveyResultListComponent } from './pages/survey-result-list/survey-result-list.component';
+import { SurveyResultIdComponent } from './pages/survey-result-id/survey-result-id.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +31,17 @@ import { AuthGuardService } from './services/auth-guard.service';
     ConnectionComponent,
     ProfileComponent,
     SurveyComponent,
-    HistoryComponent
+    HistoryComponent,
+    LoginComponent,
+    HomeComponent,
+    SurveyResponseComponent,
+    SurveyResultListComponent,
+    SurveyResultIdComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    AdminRoutingModule,
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -37,7 +51,10 @@ import { AuthGuardService } from './services/auth-guard.service';
       { path: 'connection', component: ConnectionComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]  },
       { path: 'survey', component: SurveyComponent },
-      { path: 'history', component: HistoryComponent }
+      { path: 'history', component: HistoryComponent },
+      { path: 'survey_response/:id', component: SurveyResponseComponent},
+      { path: 'survey_list', component: SurveyResultListComponent},
+      { path: 'survey_list/:id', component: SurveyResultIdComponent}
     ])
   ],
   providers: [AuthService],
