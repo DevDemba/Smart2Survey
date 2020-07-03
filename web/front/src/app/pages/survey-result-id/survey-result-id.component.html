@@ -12,7 +12,7 @@
         <tbody>
           <tr *ngIf="surveyDetail">
             <td>{{ surveyDetail.name }}</td>
-            <td>{{ surveyDetail.questionnaires[0].question }}</td>
+              <td>{{ surveyDetail.questionnaires[0].question }}</td>
             <td>
                 <p>
                   <label>
@@ -24,8 +24,8 @@
               <td>
                 <p>
                   <label>
-                    <input type="checkbox"  formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[1].text1 }}'/>
-                    <span>{{ surveyDetail.questionnaires[0].choices[1].text1 }}</span>
+                    <input type="checkbox"  formControlName="choices" value='{{ surveyDetail.questionnaires[0].choices[0].text1 }}'/>
+                    <span>{{ surveyDetail.questionnaires[0].choices[0].text1 }}</span>
                   </label>
                 </p>
               </td>   

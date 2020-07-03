@@ -27,13 +27,13 @@
                         </div>
                     </div>
                     <div class="request" formArrayName="choices">
-                        <div class="form-group" *ngFor="let c of survey.controls.questionnaires.controls.choices.controls[i].controls[i].controls; index as i" [formGroupName]="i" >
-                            <label for="answer">Choice {{(index+1)}}</label>
-                            <input *ngIf="index > 2" type="text" formControlName="text">
+                        <div class="form-group" *ngFor="let c of $any(q).get('choices').controls; index as x" [formGroupName]="x" >
+                            <label for="answer">Choice {{(x+1)}}</label>
+                            <input *ngIf="x<2" type="text" formControlName="text" placeholder="Choice {{(x+1)}}">
                             <div else class="input-group">
-                                <input type="text"  formArrayName="c[i].controls.text1" >
+                                <input type="text"  formControlName="text1" placeholder="Choice {{(x+1)}}" >
                                 <span class="input-group-btn">
-                                    <button type="button" (click)="removechoice(i,index)" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                    <button type="button" (click)="removechoice(i,x)" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                 </span>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                     </button>
                 </div>
                 <div>
-                    <button class="btn waves-effect waves-light" type="button" name="action"  (click)="removechoice(i,index)">Remove 
+                    <button class="btn waves-effect waves-light" type="button" name="action"  (click)="removechoice(i,x)">Remove 
                         <i class="material-icons right">delete</i>
                     </button>
                 </div>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div>
-            <button class="btn waves-effect waves-light" type="button" name="action" (click)="create(i,index)">Create
+            <button class="btn waves-effect waves-light" type="button" name="action" (click)="create(i,x)">Create
                 <i class="material-icons right">send</i>
             </button>
       </div>
