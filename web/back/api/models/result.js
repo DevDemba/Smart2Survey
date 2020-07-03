@@ -1,16 +1,22 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema, ObjectId = Schema.ObjectId;
 
 const resultSchema = new mongoose.Schema({
     survey: { 
-        type: Schema.ObjectId, 
-        required:true, ref: 'Survey' 
+        type: String,
+        /* type: ObjectId  */
+       /*  auto : true, */
+        required:true, 
+        ref: 'Survey' 
     },
     question: {
-        type:Schema.ObjectId,
+        type: String,
+      /*   auto : true, */
         required: true
     },
     choices:[{
-        type:Schema.ObjectId,
+        type: String,
+      /*   auto : true, */
         required: true
     }],
     created_at: { 
@@ -19,6 +25,6 @@ const resultSchema = new mongoose.Schema({
     }
 });
 
-const Result = mongoose.model('Results', resultSchema);
+const Result = mongoose.model('Result', resultSchema);
 
-module.exports =  Result;
+module.exports = Result;

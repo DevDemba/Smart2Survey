@@ -22,22 +22,6 @@ const userSchema = new mongoose.Schema({
       match: [/\S+@\S+\.\S+/, 'is invalid'], 
       index: true
     },
-/*     enabled: { 
-      type: Boolean, 
-      default: true 
-    },
-    accountNonLocked: { 
-      type: Boolean, 
-      default: true 
-    },
-    accountNonExpired: { 
-      type: Boolean, 
-      default: true 
-    },
-    credentialsNonExpired: { 
-      type: Boolean, 
-      default: true 
-    }, */
     hash: String,
     salt: String,
     created_at: { 
