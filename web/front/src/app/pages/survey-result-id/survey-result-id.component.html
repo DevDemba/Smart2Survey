@@ -13,17 +13,20 @@
           <tr *ngIf="surveyDetail">
             <td>
               <p>
-                <label for="name">
+                <label>
                   <input type="text"  formControlName="name" value="{{ surveyDetail.name }}"/>
-                 <!--  <span>{{ surveyDetail.name }}</span> -->
+            <!--       <span>{{ surveyDetail.name }}</span> -->
                 </label>
               </p>
             </td>
-              <td>{{ surveyDetail.questionnaires[0].question }}</td>
+              <td>
+                <input type="text" formControlArray="choices" value="{{  surveyDetail.questionnaires[0].question }}"/>
+  <!--               <span>{{ surveyDetail.questionnaires[0].question }}</span> -->
+              </td>
             <td>
                 <p>
                   <label>
-                    <input type="checkbox" formControlArray="choices" />
+                    <input type="checkbox" formControlArray="choices" value="{{ surveyDetail.questionnaires[0].choices[0].text }}"/>
                     <span>{{ surveyDetail.questionnaires[0].choices[0].text }}</span>
                   </label>
                 </p>
@@ -31,7 +34,7 @@
               <td>
                 <p>
                   <label>
-                    <input type="checkbox"  formControlArray="choices" />
+                    <input type="checkbox"  formControlArray="choices" value="{{ surveyDetail.questionnaires[0].choices[0].text1 }}" />
                     <span>{{ surveyDetail.questionnaires[0].choices[0].text1 }}</span>
                   </label>
                 </p>

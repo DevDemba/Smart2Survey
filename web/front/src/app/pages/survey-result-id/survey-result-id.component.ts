@@ -22,6 +22,7 @@ export class SurveyResultIdComponent implements OnInit {
 
   constructor(private router:Router, public route: ActivatedRoute, private fb: FormBuilder) { 
     this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
+   
   }
 
   ngOnInit() {
@@ -35,7 +36,8 @@ export class SurveyResultIdComponent implements OnInit {
       })]),
     })
 
-    
+    this.id;
+    //console.log(this.id)
   }
 
   ngOnChanges(){
@@ -48,12 +50,14 @@ export class SurveyResultIdComponent implements OnInit {
   }
 
   getSurveyDetail() {
+    this.id;
+    console.log(this.id)
 
     const apiUrl = 'http://localhost:3000/api';
   
       axios({
           method: 'get',
-          url: `${apiUrl}/survey/show/`+ this.id,
+          url: `${apiUrl}/survey/list/`+ this.id,
           data: this.surveyDetail
       }).then((response) => {
         this.surveyDetail = response.data;

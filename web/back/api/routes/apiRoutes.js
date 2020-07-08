@@ -46,12 +46,12 @@ router.post('/user/login', controllerAuth.login);
 
 //router.post('/admin/user/remove', controllerAdmin.removeUser);
 
-router.get('/survey/show/:id', controllerAdmin.displaySurvey);
 router.get('/survey/show/:id/:question_id', controllerAdmin.show_question);
 router.get('/survey/show/:id/:question_id/results', controllerAdmin.getResultatByID);
 router.get('/survey/list', controllerAdmin.displaySurveyList);
+router.get('/survey/list/:id', controllerAdmin.displaySurvey);
 router.post('/survey/create', controllerAdmin.createSurvey);
 router.post('/survey/answer', controllerAdmin.answerSurvey);
-router.get('/survey/results',controllerAdmin.getResultats);
+router.get('/survey/results', controllerAdmin.getResultats);
 
 module.exports = router;

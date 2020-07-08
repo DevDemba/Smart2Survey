@@ -30,10 +30,12 @@ module.exports.removeUser = (req, res, next) => {
 
 module.exports.displaySurvey = (req, res, next) => {
    
-    let id = req.params._id;
+    let id = req.params.id;
+
+    console.log(id)
 
     // Survey findOne() method to return user by id
-    Survey.findOne({id:id}, (err, result) => {
+    Survey.findById({_id:id}, (err, result) => {
     if(err) { console.log(err) }
     else { res.json(result) }
     })
